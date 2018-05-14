@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ConexionBd {
+public class ConexionBd implements AutoCloseable {
 
     private static String URL = "jdbc:h2:tcp://localhost/./bdravioli";
     private static String USER = "sa";
@@ -26,6 +26,7 @@ public class ConexionBd {
     private Connection conn;
 
     static {
+        System.err.println("En el bloque estaático de ConexionBD");
         inicializar();
     }
 
@@ -47,6 +48,7 @@ public class ConexionBd {
             try {
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 conn.prepareStatement(CREATION_STATEMENT).executeUpdate();
+                System.err.println("INFO: Creando BD + tabla");
             } catch (SQLException ex) {
                 System.err.println("Error grave: no se pudo crear la tabla");
             }

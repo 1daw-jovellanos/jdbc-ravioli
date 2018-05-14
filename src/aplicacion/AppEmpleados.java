@@ -2,15 +2,21 @@ package aplicacion;
 
 import java.util.*;
 import java.sql.*;
+import modelo.*;
 
 public class AppEmpleados {
 
     Scanner in;
 
     public AppEmpleados() {
+        in = new Scanner(System.in);
     }
 
     void menuAnnadirEmpleado() {
+        try (ConexionBd conn = new ConexionBd()) {
+            
+        } catch (SQLException ex) {
+        };
     }
 
     void menuListarEmpleados() {
