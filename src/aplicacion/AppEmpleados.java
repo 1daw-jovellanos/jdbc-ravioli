@@ -12,40 +12,75 @@ public class AppEmpleados {
         in = new Scanner(System.in);
     }
 
-    void menuAnnadirEmpleado() {
-        try (ConexionBd conn = new ConexionBd()) {
-            
-        } catch (SQLException ex) {
-        };
+    void menuInsertarEmpleado() {
+        Empleado e = new Empleado();
+        System.out.print("Nombre: ");
+        e.setNombre(in.nextLine());
+        System.out.print("Apellido 1: ");
+        e.setApellido1(in.nextLine());
+        System.out.print("Apellido 2: ");
+        e.setApellido2(in.nextLine());
+        System.out.print("Ciudad: ");
+        e.setCiudad(in.nextLine());
+        System.out.print("Salario: ");
+        e.setSalario(Double.parseDouble(in.nextLine()));
+        if (e.create()) {
+            System.out.format("Empleado guardado. Se le asignó el id %d%n", e.getId());
+        } else {
+            System.out.format("No se pudo guardar el empleado.%n");
+        }
     }
 
-    void menuListarEmpleados() {
+    void menuObtenerEmpleado() {
     }
 
-    void menuBorrarEmpleados() {
+    void menuEliminarEmpleado() {
        
     }
+    
+    void menuModificarEmpleado() {
+       
+    }
+    
+    void menuListarTodos() {
+       
+    }
+    
+    void menuBorrarPorRangoSueldo() {
+       
+    }
+    
+    void menuBuscarPorCiudad() {
+       
+    }
+ 
+    
+    
 
     void run() {
         int opcion;
         do {
             System.out.format(
-                    "1.- Añadir Empleado.\n"
-                    + "2.- Listar todos los empleados.\n"
-                    + "3.- Borrar por apellido\n"
-                    + "0.- Salir\n"
+                      "1.- Insertar un Empleado.\n"
+                    + "2.- Obtener un empleado por id.\n"
+                    + "3.- Borrar un empleado por id\n"
+                    + "4.- Modificar un empleado por id\n"
+                    + "5.- Listar todos\n"
+                    + "6.- Borrar por rango de salario\n"
+                    + "7.- Buscar por apellido\n"
+                    + "0.- Filtrar empleados por ciudad\n"
                     + "  -->"
             );
             opcion = Integer.parseInt(in.nextLine());
             switch (opcion) {
                 case 1:
-                    menuAnnadirEmpleado();
+                    menuInsertarEmpleado();
                     break;
                 case 2:
-                    menuListarEmpleados();
+                   
                     break;
                 case 3:
-                    menuBorrarEmpleados();
+                   
                     break;
             }
         } while (opcion != 0);
