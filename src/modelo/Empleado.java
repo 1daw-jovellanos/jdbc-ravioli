@@ -74,7 +74,7 @@ public class Empleado {
     public boolean create() {
         boolean ok = true; // Supongo que la operación va a ir ok;
         try (Connection conn = ConexionBd.obtener()) {
- 
+            // por hacer
         } catch (SQLException ex) {
             System.err.println("Método create: Error al insertar/" + ex.getMessage());
         }
